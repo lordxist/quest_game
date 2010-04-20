@@ -1,0 +1,41 @@
+QuestGame
+=========
+
+Lightweight Rails Plugin for quest-/turn-based games. Currently highly experimental, enjoy with care.
+
+Generators
+==========
+
+The 'quest' generator provides a way to create a quest selection controller and view, along with a 'show' view showing the player whose turn it is. A player class for use with that can be created with the 'player' generator. The model names should be given as the first arguments, respectively; the default quest model name is simply 'Quest'.
+
+Adding a player
+===============
+
+First generate a player with the 'player' generator, give the quest model name as the second argument. Then make sure to establish an association between the player and quest models. Implement the quest models 'players' method to return the desired associated objects.
+
+Example quest model:
+
+class Quest < ActiveRecord::Base
+  include QuestSystem
+
+  has_many :game_characters
+
+  def players
+    @players ||= game_characters # for caching
+  end
+end
+
+Configuration
+=============
+
+You can configure the turn duration of each player and the earliest time (before the start) that a player can join  a quest.
+
+Example (at the end of your config/environment.rb):
+
+QuestGame.configure do |config|
+  config.turn_duration = 30         # default: 60
+  config.quest_join_time = 600      # default: 300
+end
+
+
+See the Wiki for further examples and integration with authentication.

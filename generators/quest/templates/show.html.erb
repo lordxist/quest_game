@@ -1,0 +1,8 @@
+<%% if @<%= singular_name %>.started? %>
+  <p>Quest started.</p>
+  <%% if current_player.active? %>
+    <p>Your turn.</p>
+  <%% end %>
+<%% else %>
+  <p>Please wait...</p>
+<%% end %>

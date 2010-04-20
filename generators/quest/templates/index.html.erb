@@ -1,0 +1,24 @@
+<h1>Listing quests</h1>
+
+<table>
+  <thead>
+  	<tr>
+  	  <td>ID</td>
+	  <td>Starts at</td>
+	  <td>Actions</td>
+  	</tr>
+  </thead>
+
+<%% for <%= singular_name %> in @<%= plural_name %> %>
+  <tr>
+  	<td><%%= quest.id %></td>
+	<td><%%= quest.starts_at %></td>
+	<td>
+		<%% form_for(current_player) do |f| %>
+		  <%%= f.hidden_field :quest_id, :value => quest.id %>
+		  <%%= f.submit "Join" %>
+		<%% end %>
+	</td>
+  </tr>
+<%% end %>
+</table>
