@@ -1,8 +1,4 @@
 class <%= class_name %> < ActiveRecord::Base
-  include QuestGame::QuestSystem
-
-  def players
-    # implement this
-    raise NotImplementedError.new('players method needs to be implemented')
-  end
+  include <%= quest_model_class_name %>JoinSystem
+  include <%= quest_model_class_name %>TurnSystem
 end
