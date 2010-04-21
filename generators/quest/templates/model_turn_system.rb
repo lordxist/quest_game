@@ -16,6 +16,6 @@ module <%= class_name %>TurnSystem
 
   private
   def turn_duration
-    @turn_duration ||= ::QuestGame.config.turn_duration
+    @turn_duration ||= QuestSystem.config.turn_duration
   end
 end
