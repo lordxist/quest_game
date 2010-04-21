@@ -17,8 +17,8 @@ class QuestGenerator < Rails::Generator::NamedBase
 
       m.file 'controller.rb', File.join('app/controllers/', "#{plural_name}_controller.rb")
 
-      m.file 'index.html.erb', File.join('app/models/', "#{plural_name}/index.html.erb")
-      m.file 'show.html.erb', File.join('app/models/', "#{plural_name}/show.html.erb")
+      m.file 'index.html.erb', File.join('app/views/', "#{plural_name}/index.html.erb")
+      m.file 'show.html.erb', File.join('app/views/', "#{plural_name}/show.html.erb")
 
       m.migration_template 'migration.rb', 'db/migrate', :assigns => {
           :migration_name => "Create#{class_name.pluralize.gsub(/::/, '')}"
