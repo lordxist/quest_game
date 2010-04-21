@@ -2,7 +2,7 @@ require 'quest_system/configuration'
 
 module QuestSystem
   def ready_for_join?
-    starts_at - Time.now < ::QuestGame.config.quest_join_time
+    starts_at - Time.now < QuestSystem.config.quest_join_time
   end
 
   def started?
