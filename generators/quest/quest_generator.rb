@@ -1,4 +1,4 @@
-class QuestGameGenerator < Rails::Generator::NamedBase
+class QuestGenerator < Rails::Generator::NamedBase
   def initialize(runtime_args, runtime_options = {})
     if runtime_args.empty?
       runtime_args << 'quest'
