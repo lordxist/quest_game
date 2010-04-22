@@ -1,11 +1,15 @@
-require 'quest_system/configuration'
-
 module QuestSystem
-  def ready_for_join?
-    starts_at - Time.now < QuestSystem.config.quest_join_time
+  def self.config
+    @@config ||= Configuration.new
   end
 
-  def started?
-    Time.now > starts_at
+  def self.configure(&block)
+    raise "#configure must be sent a block" unless block_given?
+    yield config
+  end
+
+  class Configuration
+    attr_accessor_with_default :turn_duration, 60
+    attr_accessor_with_default :quest_join_time, 300
   end
 end

@@ -1,4 +1,4 @@
-class <%= class_name.pluralize %>Controller < ApplicationController
+class <%= controller_class_name %>Controller < ApplicationController
   helper_method :current_player
 
   def index
