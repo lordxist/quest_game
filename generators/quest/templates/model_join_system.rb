@@ -3,8 +3,10 @@ module <%= class_name %>JoinSystem
     base.class_eval do
       belongs_to :<%= singular_name %>
 
-      validate :no_early_<%= singular_name %>_joins, :if => "<%= singular_name %>_id_changed?"
-      validate :<%= singular_name %>_must_not_have_started, :if => "<%= singular_name %>_id_changed?"
+      with_options :if => "<%= singular_name %>_id_changed?" do |obj|
+        obj.validate :no_early_<%= singular_name %>_joins
+        obj.validate :<%= singular_name %>_must_not_have_started
+      end
     end
   end
 
