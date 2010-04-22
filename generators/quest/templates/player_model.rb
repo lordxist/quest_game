@@ -1,7 +1,7 @@
 class <%= player_class_name %> < ActiveRecord::Base
   belongs_to :<%= singular_name %>
 
-  with_options :if => "quest_id_changed?" do |e|
+  with_options :if => "<%= singular_name %>_id_changed?" do |e|
     e.validate :no_early_<%= singular_name %>_joins
     e.validate :<%= singular_name %>_must_not_have_started
   end
