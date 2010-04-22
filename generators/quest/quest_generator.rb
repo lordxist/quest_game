@@ -13,12 +13,12 @@ class QuestGenerator < Rails::Generator::NamedBase
       m.directory 'app/controllers'
       m.directory "app/views/#{plural_name}"
 
-      m.file 'model.rb', File.join('app/models/', "#{singular_name}.rb")
+      m.template 'model.rb', File.join('app/models/', "#{singular_name}.rb")
 
-      m.file 'controller.rb', File.join('app/controllers/', "#{plural_name}_controller.rb")
+      m.template 'controller.rb', File.join('app/controllers/', "#{plural_name}_controller.rb")
 
-      m.file 'index.html.erb', File.join('app/views/', "#{plural_name}/index.html.erb")
-      m.file 'show.html.erb', File.join('app/views/', "#{plural_name}/show.html.erb")
+      m.template 'index.html.erb', File.join('app/views/', "#{plural_name}/index.html.erb")
+      m.template 'show.html.erb', File.join('app/views/', "#{plural_name}/show.html.erb")
 
       m.migration_template 'migration.rb', 'db/migrate', :assigns => {
           :migration_name => "Create#{class_name.pluralize.gsub(/::/, '')}"
@@ -26,13 +26,13 @@ class QuestGenerator < Rails::Generator::NamedBase
 
       m.route_resources 'quests'
 
-      m.file 'model_join_system.rb', File.join('lib/', "#{singular_name}_join_system.rb")
-      m.file 'model_turn_system.rb', File.join('lib/', "#{singular_name}_turn_system.rb")
+      m.template 'model_join_system.rb', File.join('lib/', "#{singular_name}_join_system.rb")
+      m.template 'model_turn_system.rb', File.join('lib/', "#{singular_name}_turn_system.rb")
     end
   end
 
   protected
   def banner
-    "Usage: #{$0} quest ModelName"
+    "Usage: #{$0} quest [ModelName]"
   end
 end
