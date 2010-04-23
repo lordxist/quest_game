@@ -38,9 +38,6 @@ class QuestGenerator < Rails::Generator::NamedBase
 
       m.route_resources plural_name
       m.route_resources player_plural_name
-
-      m.template 'model_join_system.rb', File.join('lib/', "#{singular_name}_join_system.rb")
-      m.template 'model_turn_system.rb', File.join('lib/', "#{singular_name}_turn_system.rb")
     end
   end
 
