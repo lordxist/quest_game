@@ -15,6 +15,6 @@ class <%= player_class_name %> < ActiveRecord::Base
   end
 
   def active?
-    initiative_order == current_turn
+    initiative_order == <%= singular_name %>.current_turn
   end
 end
