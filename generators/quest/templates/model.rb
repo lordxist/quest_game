@@ -14,7 +14,7 @@ class <%= class_name %> < ActiveRecord::Base
   end
 
   def current_turn(time = Time.now)
-    (passed_time(time) - round_duration * passed_rounds(time)) / QuestSystem.config.turn_duration
+    ((passed_time(time) - round_duration * passed_rounds(time)) / QuestSystem.config.turn_duration).floor
   end
 
   def passed_rounds(time = Time.now)
