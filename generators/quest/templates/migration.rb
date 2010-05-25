@@ -2,6 +2,8 @@ class <%= migration_name %> < ActiveRecord::Migration
   def self.up
     create_table :<%= table_name %> do |t|
       t.column :starts_at, :datetime
+      t.column :turn_duration, :integer, :default => 60
+      t.column :quest_join_time, :integer, :default => 300
 
       t.timestamps
     end

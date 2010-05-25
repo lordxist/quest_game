@@ -11,14 +11,15 @@ The 'quest' generator provides a way to create a quest selection controller and 
 Configuration
 =============
 
-You can configure the turn duration of each player and the earliest time (before the start) that a player can join  a quest.
+You can configure the turn duration of each player and the earliest time (before the start) that a player can join a quest.
 
-Example (at the end of your config/environment.rb):
+Example:
 
-QuestGame.configure do |config|
-  config.turn_duration = 30         # default: 60
-  config.quest_join_time = 600      # default: 300
-end
+Quest.create(
+  :starts_at => "2010-04-04 20:00:00"
+  :turn_duration => 30                # default: 60
+  :quest_join_time => 600             # default: 300
+)
 
 
 See the Wiki for further examples and integration with authentication.

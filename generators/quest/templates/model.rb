@@ -2,7 +2,7 @@ class <%= class_name %> < ActiveRecord::Base
   has_many :<%= player_plural_name %>
 
   def ready_for_join?
-    starts_at - Time.now < QuestSystem.config.quest_join_time
+    starts_at - Time.now < quest_join_time
   end
 
   def started?
@@ -14,7 +14,7 @@ class <%= class_name %> < ActiveRecord::Base
   end
 
   def current_turn(time = Time.now)
-    ((passed_time(time) - round_duration * passed_rounds(time)) / QuestSystem.config.turn_duration).floor
+    ((passed_time(time) - round_duration * passed_rounds(time)) / turn_duration).floor
   end
 
   def passed_rounds(time = Time.now)
@@ -22,6 +22,6 @@ class <%= class_name %> < ActiveRecord::Base
   end
 
   def round_duration
-    QuestSystem.config.turn_duration * <%= player_plural_name %>.count
+    turn_duration * <%= player_plural_name %>.count
   end
 end
